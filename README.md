@@ -1,8 +1,6 @@
 # 🌿 Calculadora de Emissão de CO₂
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Bootcamp-CI%26T%20Do%20Prompt%20ao%20Agente-80ec37" alt="Bootcamp CI&T">
-  <img src="https://img.shields.io/badge/Plataforma-DIO-5fa5e6" alt="Plataforma DIO">
   <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white" alt="HTML5">
   <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white" alt="CSS3">
   <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black" alt="JavaScript">
