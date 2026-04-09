@@ -1,0 +1,663 @@
+/* ==========================================================================
+   CSS CUSTOM PROPERTIES
+   ========================================================================== */
+:root {
+    /* Eco-friendly color palette */
+    --primary: #10b981;
+    --secondary: #059669;
+    --accent: #34d399;
+    --danger: #ef4444;
+    --warning: #f59e0b;
+    --info: #3b82f6;
+    --bg: #f3f4f6;
+    --white: #ffffff;
+    --text: #171937;
+    --text-light: #6b7280;
+
+    /* Spacing scale */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+
+    /* Border Radius */
+    --radius: 0.5rem;
+    --radius-lg: 1rem;
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* ==========================================================================
+   BASE STYLES
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /* Utilizando um gradiente leve (ajustado da imagem para um tom esverdeado mais legível e focado no tema eco) */
+    background: linear-gradient(135deg, #d4fc79 0%, #96e6a1 100%);
+    min-height: 100vh;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: var(--text);
+    line-height: 1.5;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--spacing-md);
+}
+
+/* ==========================================================================
+   UTILITY CLASSES
+   ========================================================================== */
+.hidden {
+    display: none !important;
+}
+
+.section-title {
+    font-size: 1.5rem;
+    color: var(--text);
+    margin-bottom: var(--spacing-md);
+    font-weight: 700;
+}
+
+/* ==========================================================================
+   HEADER
+   ========================================================================== */
+.header {
+    background-color: var(--white);
+    box-shadow: var(--shadow-sm);
+    padding: var(--spacing-lg) var(--spacing-md);
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.header__title {
+    color: var(--primary);
+    font-size: 2rem;
+    margin-bottom: var(--spacing-xs);
+}
+
+.header__subtitle {
+    color: var(--text-light);
+    font-size: 1rem;
+}
+
+/* ==========================================================================
+   FORM STYLING (.calculator-form)
+   ========================================================================== */
+.calculator-form {
+    background-color: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    padding: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+}
+
+.calculator-form__group {
+    margin-bottom: var(--spacing-md);
+}
+
+.calculator-form__label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: var(--spacing-xs);
+    color: var(--text);
+}
+
+.calculator-form__input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: var(--radius);
+    font-family: inherit;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+}
+
+.calculator-form__input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+}
+
+.calculator-form__helper-text {
+    display: block;
+    font-size: 0.875rem;
+    color: var(--text-light);
+    margin-top: var(--spacing-xs);
+}
+
+/* Fieldset */
+.calculator-form__fieldset {
+    border: none;
+    margin-top: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+}
+
+.calculator-form__legend {
+    font-weight: bold;
+    margin-bottom: var(--spacing-sm);
+    color: var(--text);
+}
+
+/* ==========================================================================
+   TRANSPORT MODE GRID
+   ========================================================================== */
+.calculator-form__transport-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Mobile: 2 columns */
+    gap: var(--spacing-md);
+}
+
+.transport-option {
+    position: relative;
+}
+
+.transport-option__input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.transport-option__card {
+    border: 2px solid #e5e7eb;
+    padding: var(--spacing-md);
+    border-radius: var(--radius);
+    cursor: pointer;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.2s ease;
+    background-color: var(--white);
+}
+
+.transport-option__icon {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-xs);
+}
+
+.transport-option__text {
+    font-weight: 500;
+    color: var(--text);
+}
+
+/* Transport Mode Interactions */
+.transport-option__card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+    border-color: #d1d5db;
+}
+
+.transport-option__input:checked + .transport-option__card {
+    border-color: var(--primary);
+    background-color: rgba(16, 185, 129, 0.05); /* Light primary background */
+}
+
+/* ==========================================================================
+   CHECKBOX
+   ========================================================================== */
+.calculator-form__checkbox-wrapper {
+    margin-top: var(--spacing-sm);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.calculator-form__checkbox {
+    width: 1rem;
+    height: 1rem;
+    accent-color: var(--primary);
+    cursor: pointer;
+}
+
+.calculator-form__label--inline {
+    font-size: 0.875rem;
+    color: var(--text);
+    cursor: pointer;
+}
+
+/* ==========================================================================
+   BUTTON
+   ========================================================================== */
+.calculator-form__button {
+    width: 100%;
+    background-color: var(--primary);
+    color: var(--white);
+    padding: 1rem;
+    border: none;
+    border-radius: var(--radius);
+    font-size: 1.125rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calculator-form__button:hover:not(:disabled) {
+    background-color: var(--secondary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.calculator-form__button:disabled {
+    background-color: var(--text-light);
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* ==========================================================================
+   SPINNER (Loading Animation)
+   ========================================================================== */
+.spinner {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    border-top-color: var(--primary);
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* ==========================================================================
+   RESULTS SECTIONS
+   ========================================================================== */
+.results-section {
+    background-color: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    padding: var(--spacing-xl);
+    margin-bottom: var(--spacing-lg);
+}
+
+.results-section__title {
+    font-size: 1.5rem;
+    color: var(--primary);
+    margin-bottom: var(--spacing-md);
+    border-bottom: 2px solid var(--bg);
+    padding-bottom: var(--spacing-xs);
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+.footer {
+    text-align: center;
+    padding: var(--spacing-lg) 0;
+    margin-top: var(--spacing-xl);
+}
+
+.footer__text {
+    color: var(--text);
+    font-size: 0.875rem;
+    opacity: 0.8;
+}
+
+/* ==========================================================================
+   RESPONSIVE (Desktop Adjustments)
+   ========================================================================== */
+@media (min-width: 768px) {
+    .calculator-form__transport-grid {
+        grid-template-columns: repeat(4, 1fr); /* Desktop: 4 columns */
+    }
+}
+
+/* ==========================================================================
+   DYNAMICALLY GENERATED CONTENT STYLES
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   RESULTS SECTION (.results-section was defined in base, adding specifics)
+   -------------------------------------------------------------------------- */
+
+/* Container genérico para as seções de resultado */
+#results, #comparison, #carbon-credits {
+    background-color: var(--white);
+    padding: var(--spacing-xl);
+    margin-bottom: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    /* Prepara para a animação */
+    opacity: 0; 
+    transform: translateY(20px);
+}
+
+/* Quando a classe hidden é removida, aplicamos a animação */
+#results:not(.hidden), 
+#comparison:not(.hidden), 
+#carbon-credits:not(.hidden) {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Estrutura de Grid para os cards de resultado */
+.results__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+}
+
+/* Individual result card styling */
+.results__card {
+    background-color: var(--white);
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: var(--spacing-xs);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid #e5e7eb;
+}
+
+/* Ajuste para o layout Flex do Card (caso use ícone + data lado a lado) */
+.results__card--flex {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.results__icon {
+    font-size: 2.5rem;
+    margin-right: 1rem;
+}
+
+.results__data {
+    display: flex;
+    flex-direction: column;
+}
+
+.results__label,
+.results__card-title {
+    font-size: 0.875rem;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.25rem;
+}
+
+.results__value,
+.results__card-value {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--text);
+}
+
+/* Special highlight styling for savings */
+.results__card--savings {
+    grid-column: 1 / -1; /* Ocupa toda a largura no grid */
+    border-left: 4px solid var(--info);
+    background-color: #eff6ff; /* Light blue info bg */
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.results__card--highlight {
+    background-color: #f0fdf4;
+    border-color: #bbf7d0;
+}
+
+.results__card--highlight .results__card-title {
+    color: var(--secondary);
+}
+
+.results__card--highlight .results__card-value {
+    color: var(--primary);
+    font-size: 2rem;
+}
+
+
+/* --------------------------------------------------------------------------
+   COMPARISON SECTION
+   -------------------------------------------------------------------------- */
+
+.comparison__list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.comparison__item {
+    background-color: var(--white);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 2px solid #e5e7eb; /* gray-light */
+    border-radius: var(--radius);
+    transition: all 0.3s ease;
+}
+
+.comparison__item--selected {
+    border-color: var(--primary);
+    background-color: rgba(16, 185, 129, 0.05); /* light primary (rgba) */
+}
+
+.comparison__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.comparison__label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: bold;
+}
+
+.comparison__icon {
+    font-size: 1.5rem;
+}
+
+.comparison__badge {
+    height: 18px; /* Ajustado visualmente para o texto */
+    background-color: var(--primary);
+    color: var(--white);
+    padding: 0.15rem 0.5rem;
+    border-radius: 9999px; /* rounded-full */
+    font-size: 0.7rem;
+    display: inline-flex;
+    align-items: center;
+    font-weight: normal;
+}
+
+.comparison__stats {
+    text-align: right;
+}
+
+.comparison__emission {
+    font-weight: bold;
+    font-size: 1.125rem;
+    display: block;
+}
+
+.comparison__percentage {
+    font-size: 0.875rem;
+    color: var(--text-light); /* gray */
+}
+
+.comparison__bar-bg {
+    width: 100%;
+    height: 12px;
+    background-color: #e5e7eb; /* gray-light */
+    border-radius: 9999px;
+    overflow: hidden;
+}
+
+.comparison__bar-fill {
+    height: 100%;
+    border-radius: 9999px;
+    transition: width 0.5s ease;
+}
+
+.comparison__tip {
+    background-color: #eff6ff; /* light blue background */
+    border-left: 4px solid var(--info);
+    padding: 1rem;
+    margin-top: 1.5rem;
+    display: flex;
+    gap: 0.5rem;
+    border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+
+/* --------------------------------------------------------------------------
+   CARBON CREDITS SECTION
+   -------------------------------------------------------------------------- */
+
+.credits__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on desktop */
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.credits__card {
+    background-color: var(--white);
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid #e5e7eb;
+    text-align: center;
+}
+
+.credits__card-title {
+    font-size: 0.875rem;
+    color: var(--text-light); /* small gray text */
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.credits__value-large {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--primary);
+    margin-bottom: 0.25rem;
+}
+
+.credits__helper-text {
+    font-size: 0.75rem; /* tiny text */
+    color: var(--text-light);
+    margin-top: 0.25rem;
+}
+
+.credits__info-box {
+    border: 2px dashed var(--info);
+    background-color: #eff6ff; /* light blue */
+    padding: 1rem;
+    border-radius: var(--radius);
+    margin-bottom: 1.5rem;
+}
+
+.credits__info-box strong {
+    font-weight: bold;
+    color: var(--info);
+}
+
+.credits__info-box p {
+    line-height: 1.6;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.credits__button {
+    width: 100%;
+    background-color: var(--primary);
+    color: var(--white);
+    padding: 1rem;
+    border-radius: var(--radius);
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    font-size: 1.1rem;
+    transition: all 0.2s ease;
+}
+
+.credits__button:hover {
+    background-color: var(--secondary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+
+/* --------------------------------------------------------------------------
+   ANIMATIONS
+   -------------------------------------------------------------------------- */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE (Mobile Adjustments)
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 767px) {
+    /* Ajusta padding das seções principais para telas menores */
+    #results, #comparison, #carbon-credits {
+        padding: var(--spacing-md);
+    }
+
+    /* Grid de créditos de carbono vira 1 coluna no mobile */
+    .credits__grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Reduz tamanhos de fonte grandes para evitar quebra de layout */
+    .results__value,
+    .results__card-value {
+        font-size: 1.25rem;
+    }
+
+    .results__card--highlight .results__card-value {
+        font-size: 1.75rem;
+    }
+
+    .credits__value-large {
+        font-size: 2rem;
+    }
+
+    /* Ajustes de espaçamento interno nos cards */
+    .results__card,
+    .credits__card {
+        padding: 1rem;
+    }
+
+    .comparison__header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .comparison__stats {
+        text-align: left;
+    }
+}
