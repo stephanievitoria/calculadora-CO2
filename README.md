@@ -17,7 +17,7 @@ Trata-se de uma aplicação web interativa e responsiva que calcula a pegada de 
 
 * **Autocompletar de Rotas:** Base de dados local com rotas populares brasileiras que preenche a distância automaticamente.
 * **Cálculo por Modal:** Compara emissões entre Bicicleta, Carro, Ônibus e Caminhão.
-* **Comparativo Visual:** Barras de progresso dinâmicas e codificadas por cor para ilustrar a eficiência de cada meio de transporte em relação ao carro.
+* **Comparativo Visual:** Barras de progresso dinâmicas e codificadas por cor para ilustrar a eficiência de cada meio de transporte.
 * **Créditos de Carbono:** Estima quantos créditos são necessários para compensar a viagem e o valor financeiro médio.
 * **UX/UI Aprimorada:** Feedback visual de carregamento (spinner) e scroll suave para os resultados.
 
